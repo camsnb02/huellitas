@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Productos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    main {
+      margin: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    form {
+      max-width: 400px;
+      width: 100%;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Registro de Productos</h1>
+  </header>
+
+  <main>
+    <form id="registroProductoForm">
+      <h2>Registro de Producto</h2>
+
+      <label for="nombreProducto">Nombre:</label>
+      <input type="text" id="nombreProducto" name="nombreProducto" required>
+
+      <label for="precioProducto">Precio:</label>
+      <input type="number" id="precioProducto" name="precioProducto" min="0" step="0.01" required>
+
+      <label for="cantidadProducto">Cantidad:</label>
+      <input type="number" id="cantidadProducto" name="cantidadProducto" min="0" required>
+
+      <label for="detallesProducto">Detalles:</label>
+      <textarea id="detallesProducto" name="detallesProducto"></textarea>
+
+      <button type="button" onclick="registrarProducto()">Registrar Producto</button>
+    </form>
+  </main>
+
+  <div>
+    <h2>Lista de Productos</h2>
+    <table id="productoTable">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Detalles</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    function registrarProducto() {
+      var nombreProducto = $('#nombreProducto').val();
+      var precioProducto = $('#precioProducto').val();
+      var cantidadProducto = $('#cantidadProducto').val();
+      var detallesProducto = $('#detallesProducto').val();
+
+      // Validar campos
+      if (!nombreProducto || !precioProducto || !cantidadProducto) {
+        alert('Por favor, complete todos los campos obligatorios.');
+        return;
+      }
+
+      // Agregar producto a la tabla
+      $('#productoTable tbody').append('<tr><td>' + nombreProducto + '</td><td>' + precioProducto + '</td><td>' + cantidadProducto + '</td><td>' + detallesProducto + '</td></tr>');
+
+      // Limpiar campos de registro de producto
+      $('#nombreProducto').val('');
+      $('#precioProducto').val('');
+      $('#cantidadProducto').val('');
+      $('#detallesProducto').val('');
+    }
+  </script>
+</body>
+</html>

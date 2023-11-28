@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Servicios</title>
+  <link rel="icon" type="image/png" href="img/perro.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    #catalogoServicios {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .servicio {
+      flex: 0 1 calc(30% - 20px);
+      margin: 10px;
+      padding: 15px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .servicio:hover {
+      transform: scale(1.05);
+    }
+
+    .imagen-servicio {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .nombre {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .descripcion {
+      margin-top: 10px;
+    }
+
+    button {
+      display: block;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    /* Reglas de medios para hacerlo responsive */
+    @media screen and (max-width: 768px) {
+      .servicio {
+        flex: 0 1 calc(50% - 20px);
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .servicio {
+        flex: 0 1 calc(100% - 20px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Catálogo de Servicios</h1>
+  </header>
+
+  <div id="catalogoServicios">
+    <!-- Contenido del catálogo se añadirá aquí dinámicamente con jQuery -->
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+     
+      var servicios = [
+        { nombre: 'Consultas Medicas', imagen: 'https://purina.com.pe/sites/default/files/styles/webp/public/2022-10/purina-consulta-veterinaria-para-mascotas-lo-que-debes-saber.jpg.webp?itok=Bq6VJ-Fm', descripcion: 'En "Huellitas", nuestras consultas médicas van más allá de la atención convencional. Nuestros dedicados veterinarios ofrecen evaluaciones exhaustivas, asegurándose de comprender las necesidades únicas de cada mascota. Proporcionamos un espacio donde el amor y la experiencia se fusionan para brindar el mejor cuidado posible.' },
+        { nombre: 'Vacunacion y Prevencion', imagen: 'https://www.decaninos.com/wp-content/uploads/2021/08/vacuna-perro.jpg', descripcion: 'Protege a tus queridos amigos peludos contra las amenazas invisibles. En "Huellitas", no solo proporcionamos servicios de vacunación, sino que también nos comprometemos a educarte sobre prácticas preventivas. Nos esforzamos por construir una barrera de inmunidad que garantice la salud a largo plazo de tus mascotas.' },
+        { nombre: 'Cirugía y Procedimientos Quirúrgicos', imagen: 'https://www.boztibbi.com/wp-content/uploads/2020/05/Veteriner-Cerrahisinde-Kullan%C4%B1lan-Diki%C5%9F-Materyalleri-Boz-T%C4%B1bbi.jpg', descripcion: 'En nuestras modernas instalaciones, tus mascotas reciben atención quirúrgica de la más alta calidad. Desde cirugías programadas hasta procedimientos necesarios, nuestro equipo especializado trabaja con dedicación y tecnología avanzada para garantizar el bienestar y la recuperación rápida de tus amigos peludos.' },
+        { nombre: 'Laboratorio Clínico', imagen: 'https://www.veterinariosvs.org/wp-content/uploads/2018/06/laboratory.jpg', descripcion: 'En "Huellitas", la precisión es nuestra prioridad. Nuestro laboratorio clínico ofrece una gama completa de pruebas, desde análisis de sangre hasta estudios detallados, garantizando diagnósticos certeros. Nos enorgullece ser el pilar de la atención médica de tus mascotas.' },
+        { nombre: 'Imagenología', imagen: 'https://www.promedco.com/images/Noticias_2021/rayos-x-veterinarios1.jpg', descripcion: 'A través de tecnologías de imagen avanzadas, exploramos el interior de tus mascotas de manera minuciosa. Radiografías, ecografías y más, todos disponibles en "Huellitas". Estamos comprometidos a ofrecer una visión clara de la salud de tus amigos peludos.' },
+        { nombre: 'Odontología', imagen: 'https://www.odontoespacio.net/img/noticia/noticia_1592.jpg', descripcion: 'En "Huellitas", entendemos la importancia de las sonrisas saludables en tus mascotas. Desde limpiezas dentales hasta tratamientos especializados, nuestro equipo de odontología trabaja para asegurar la salud bucal y la felicidad continua de tus peludos compañeros.' },
+        { nombre: 'Hospitalización y Cuidados Especializados', imagen: 'https://www.portalveterinaria.com/upload/20221214102021the-medicine-pet-care-and-people-concept-dog-and-veterinarian-doctor-at-vet-clinic_pv2.jpg', descripcion: 'Cuando las circunstancias demandan atención intensiva, "Huellitas" ofrece servicios de hospitalización y cuidados especializados. Aquí, nos aseguramos de que tus mascotas se sientan seguras y atendidas durante su proceso de recuperación.' },
+        { nombre: 'Nutrición y Asesoramiento', imagen: 'https://misanimales.com/wp-content/uploads/2018/03/alimentacion-perros-y-gatos.jpg', descripcion: 'En "Huellitas", cada dieta es única. Nuestro servicio de nutrición y asesoramiento se adapta a las necesidades individuales de tus mascotas, garantizando una alimentación equilibrada que fomente su bienestar y vitalidad.' }
+        
+      ];
+
+      // Llenar el catálogo con los datos de ejemplo
+      servicios.forEach(function(servicio) {
+        var servicioHTML = `
+          <div class="servicio">
+            <img class="imagen-servicio" src="${servicio.imagen}" alt="${servicio.nombre}">
+            <div class="nombre">${servicio.nombre}</div>
+            <p class="descripcion">${servicio.descripcion}</p>
+            <button onclick="contratarServicio('${servicio.nombre}')">Contratar</button>
+          </div>
+        `;
+        $('#catalogoServicios').append(servicioHTML);
+      });
+    });
+
+    function contratarServicio(nombreServicio) {
+      
+      alert(`Has contratado el servicio: ${nombreServicio}`);
+    }
+  </script>
+</body>
+</html>

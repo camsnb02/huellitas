@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos</title>
+  <link rel="icon" type="image/png" href="img/perro.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    #catalogoProductos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .producto {
+      flex: 0 1 calc(30% - 20px);
+      margin: 10px;
+      padding: 15px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+    }
+
+    .producto img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .detalles {
+      margin-top: 10px;
+    }
+
+    .precio {
+      font-weight: bold;
+      color: #333;
+    }
+
+    button {
+      display: block;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    /* Reglas de medios para hacerlo responsive */
+    @media screen and (max-width: 768px) {
+      .producto {
+        flex: 0 1 calc(50% - 20px);
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .producto {
+        flex: 0 1 calc(100% - 20px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Catálogo de Productos</h1>
+  </header>
+
+  <div id="catalogoProductos">
+   
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      
+      var productos = [
+        { nombre: 'Dog Chow', precio: 19.99, detalles: 'Detalles del Producto', imagen: 'https://www.purina.com.bo/sites/default/files/styles/webp/public/2022-09/ADULTOS%20PERROS%20MINIS%20Y%20PEQUEN%CC%83OS-dog-chow-frente.jpeg.webp?itok=MpwQ51iL' },
+        { nombre: 'Pedigree', precio: 29.99, detalles: 'Detalles del Producto', imagen: 'https://icnorteb2c.vteximg.com.br/arquivos/ids/156806-600-600/Alimento-para-Adulto-PedIgree-3-Kg-1-834.jpg?v=637369073474730000' },
+        { nombre: 'Royal Canin', precio: 39.99, detalles: 'Detalles del Producto ', imagen: 'https://petshop.petcenter.com.bo/wp-content/uploads/2021/02/mini-junior-x-75-kg.jpg' },
+        { nombre: 'Pro Plan', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://petshop.petcenter.com.bo/wp-content/uploads/2021/02/pro-plan-puppy-complete-15-kg.jpg' },
+        { nombre: 'Juguete para perro', precio: 59.99, detalles: 'Detalles del Producto ', imagen: 'https://http2.mlstatic.com/D_NQ_NP_658191-MLA31787987586_082019-O.webp' },
+        { nombre: 'Juguete para perro', precio: 19.99, detalles: 'Detalles del Producto ', imagen: 'https://ripleype.imgix.net/https%3A%2F%2Fdpq25p1ucac70.cloudfront.net%2Fseller-place-files%2Fmrkl-files%2F140%2FMARKETPLACE%20INTERNACIONAL%2F81QlDOPVBML_194415474035_4.jpeg?w=750&h=555&ch=Width&auto=format&cs=strip&bg=FFFFFF&q=60&trimcolor=FFFFFF&trim=color&fit=fillmax&ixlib=js-1.1.0&s=d86012958de0bc07d88fc7f4ebccfc82' },
+        { nombre: 'Juguete para perro', precio: 29.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/615H2TujCGL._AC_UF894,1000_QL80_.jpg' },
+        { nombre: 'Premios', precio: 39.99, detalles: 'Detalles del Producto ', imagen: 'https://i5.walmartimages.com.mx/mg/gm/1p/images/product-images/img_large/00750155640745l.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF' },
+        { nombre: 'Premios', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://ss345.liverpool.com.mx/xl/1095967236.jpg' },
+        { nombre: 'Premios', precio: 59.99, detalles: 'Detalles del Producto ', imagen: 'https://tienda.cuidamimascota.com.mx/cdn/shop/products/DeshidratadosDoGiftHigadodeRes_800x.jpg?v=1652480723' },
+        { nombre: 'Ropa', precio: 19.99, detalles: 'Detalles del Producto', imagen: 'https://i.ebayimg.com/thumbs/images/g/gysAAOSwQphkG4Ia/s-l640.jpg' },
+        { nombre: 'Ropa', precio: 29.99, detalles: 'Detalles del Producto', imagen: 'https://http2.mlstatic.com/D_NQ_NP_635281-MLA46171461647_052021-O.webp' },
+        { nombre: 'Ropa', precio: 37.99, detalles: 'Detalles del Producto ', imagen: 'https://image.nihaojewelry.com/fit-in/780x780/filters:quality(80)/filters:format(webp)/product/2023/9/26/1706478872578625536/Suministros_Transfronterizos_Para_Mascotas,_Ropa_Para_Perros_De_Halloween,_Calavera_De_Calabaza,_Hoz_De_Murci%C3%A9lago,_Ropa_Para_Perros_Peque%C3%B1a_Mediana_Y_Grande.jpg' },
+        { nombre: 'Ropa', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://www.latiendadefrida.com/cdn/shop/products/skucover_rcpets_packablerainponcho_d6cd66d2-9f35-499c-a5d9-058909db8f54.jpg?v=1619252417' },
+        { nombre: 'Ropa', precio: 19.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/41fVQELo-xL._AC_UF894,1000_QL80_.jpg' },
+        { nombre: 'Higiene dental', precio: 29.99, detalles: 'Detalles del Producto ', imagen: 'https://www.lavanguardia.com/files/content_image_mobile_filter/uploads/2018/08/28/5fa437d0419f8.png' },
+        { nombre: 'Cepillo para perro', precio: 39.99, detalles: 'Detalles del Producto ', imagen: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1689853089-71nsgTsRIL.jpg?crop=0.983xw:1xh;center,top&resize=980:*' },
+        { nombre: 'Cepillo para perro', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://www.hundshop.cl/cdn/shop/products/cepillo_bamboo_double_side_1000x1000.jpg?v=1582046073' },
+        { nombre: 'Cepillo para perro', precio: 59.99, detalles: 'Detalles del Producto ', imagen: 'https://cf.shopee.com.mx/file/55442cd1a45460d71920e241d9902bb4' },
+        { nombre: 'Cama para perro', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/81EECujVUEL._AC_UF1000,1000_QL80_.jpg' },
+        { nombre: 'Cama para perro', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://bawanza.com/149-thickbox_default/cama-para-perros-de-madera-hueso.jpg' }
+        //  agregar más productos según sea necesario
+      ];
+
+      // Llenar el catálogo con los datos 
+      productos.forEach(function(producto) {
+        var productoHTML = `
+          <div class="producto">
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h2>${producto.nombre}</h2>
+            <p class="precio">$${producto.precio.toFixed(2)}</p>
+            <p class="detalles">${producto.detalles}</p>
+            <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">Agregar al Carrito</button>
+          </div>
+        `;
+        $('#catalogoProductos').append(productoHTML);
+      });
+    });
+
+    function agregarAlCarrito(nombre, precio) {
+      
+      alert(`Producto agregado al carrito:\n${nombre} - $${precio.toFixed(2)}`);
+    }
+  </script>
+</body>
+</html>

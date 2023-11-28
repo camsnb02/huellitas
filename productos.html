@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Productos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de Productos</h1>
+    
+        <form id="productForm">
+            <div class="form-group">
+                <label for="productName">Nombre del Producto:</label>
+                <input type="text" class="form-control" id="productName" required>
+            </div>
+            <div class="form-group">
+                <label for="productQuantity">Cantidad:</label>
+                <input type="number" class="form-control" id="productQuantity" required>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Precio del Producto:</label>
+                <input type="number" class="form-control" id="productPrice" required>
+            </div>
+            <div class="form-group">
+                <label for="productDescription">Descripción del Producto:</label>
+                <textarea class="form-control" id="productDescription" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar Producto</button>
+        </form>
+
+       
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Nombre del Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody id="productList">
+              
+            </tbody>
+        </table>
+    </div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    
+  
+    <script>
+        $(document).ready(function () {
+            $("#productForm").submit(function (e) {
+                e.preventDefault();
+        
+                var productName = $("#productName").val();
+                var productQuantity = $("#productQuantity").val();
+                var productPrice = $("#productPrice").val();
+                var productDescription = $("#productDescription").val();
+         
+                $("#productList").append("<tr><td>" + productName + "</td><td>" + productQuantity + "</td><td>$" + productPrice + "</td><td>" + productDescription + "</td></tr>");
+                $("#productName").val("");
+                $("#productQuantity").val("");
+                $("#productPrice").val("");
+                $("#productDescription").val("");
+            });
+        });
+    </script>
+</body>
+</html>

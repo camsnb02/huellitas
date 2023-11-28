@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro e Inicio de Sesión</title>
+    <a href="sesion.html">
+        <img src="img/acceso.png" alt="Logo 3" height="50px" margin-left="20px">
+    </a>
+    <a href="registroproductos.html">
+        <img src="img/carrito-de-compras.png" alt="Logo 2" height="50px" margin-left="20px"
+        >
+    </a>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+    
+        body {
+            background-color: #f0f0f0;
+        }
+        .modal-content {
+            border-radius: 0;
+        }
+        .modal-header {
+            background-color: #318ff4;
+            color: #fff;
+        }
+        .modal-title {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mt-5">Registro e Inicio de Sesión</h1>
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+          
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#registroInicioModal">
+                Registro / Inicio de Sesión
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="registroInicioModal" tabindex="-1" role="dialog" aria-labelledby="registroInicioModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registroInicioModalLabel">Registro e Inicio de Sesión</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                
+                <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="registro-tab" data-toggle="tab" href="#registro" role="tab" aria-controls="registro" aria-selected="true">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="inicioSesion-tab" data-toggle="tab" href="#inicioSesion" role="tab" aria-controls="inicioSesion" aria-selected="false">Inicio de Sesión</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="registro" role="tabpanel" aria-labelledby="registro-tab">
+                        <!-- Formulario de Registro -->
+                        <form>
+                            <div class="form-group">
+                                <label for="nombreRegistro">Nombre</label>
+                                <input type="text" class="form-control" id="nombreRegistro" placeholder="Ingrese su nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailRegistro">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="emailRegistro" placeholder="Ingrese su correo electrónico">
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasenaRegistro">Contraseña</label>
+                                <input type="password" class="form-control" id="contrasenaRegistro" placeholder="Ingrese su contraseña">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="inicioSesion" role="tabpanel" aria-labelledby="inicioSesion-tab">
+                    
+                        <form>
+                            <div class="form-group">
+                                <label for="emailInicioSesion">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="emailInicioSesion" placeholder="Ingrese su correo electrónico">
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasenaInicioSesion">Contraseña</label>
+                                <input type="password" class="form-control" id="contrasenaInicioSesion" placeholder="Ingrese su contraseña">
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Iniciar Sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

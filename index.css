@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI';
+  }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+header {
+    background-color: #2980b9;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+.logo img{
+    height: 50px;
+    margin-left: 20px;
+}
+h1 {
+    font-size: 36px;
+}
+nav {
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav li {
+    display: inline;
+    margin: 0 20px;
+    text-decoration: wavy;
+    text-decoration-color: #ecf0f1;
+}
+section {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+}
+.pet-shop-section {
+    background-color: #ecf0f1;
+    padding: 20px;
+}
+.pet-shop-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.product-card {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.product-card img {
+    max-width: 100%;
+}
+.icons a{
+    background: #fff;
+    position: relative;
+    height: 60px;
+    width: 60px;
+    margin: 0 10px;
+    display: inline-flex;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: all 0.3s;
+    box-shadow: -3px -3px 7px #ffffff,
+                3px  3px 5px #ceced1;
+}
+.icons a:hover:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    background: #ecf0f3;
+    box-shadow: inset -3px -3px 7px #ffffff,
+    3px  3px 5px #ceced1;
+}
+.icons a i{
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+    line-height: 60px;
+}
+.icons a:hover i{
+    transform: scale(0.9);
+}
+.icons a.fb i{
+    color: #0e56e6;
+}
+.icons a.twitter i{
+    color: #1a83c4;
+}
+.icons a.instagram i{
+    color: #e06d94;
+}
+.icons a.tik i{
+    color: #020202;
+}
+.icons a.yt i {
+    color: #ff0000;
+}

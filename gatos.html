@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos</title>
+  <link rel="icon" type="image/png" href="img/perro.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    #catalogoProductos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .producto {
+      flex: 0 1 calc(30% - 20px);
+      margin: 10px;
+      padding: 15px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+    }
+
+    .producto img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .detalles {
+      margin-top: 10px;
+    }
+
+    .precio {
+      font-weight: bold;
+      color: #333;
+    }
+
+    button {
+      display: block;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    /* Reglas de medios para hacerlo responsive */
+    @media screen and (max-width: 768px) {
+      .producto {
+        flex: 0 1 calc(50% - 20px);
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .producto {
+        flex: 0 1 calc(100% - 20px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Catálogo de Productos</h1>
+  </header>
+
+  <div id="catalogoProductos">
+   
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      
+      var productos = [
+        { nombre: 'Podium Cat', precio: 19.99, detalles: 'Detalles del Producto', imagen: 'https://www.podium.com.bo/cdn/shop/products/GatoCastradoPodiumCat900gr.jpg?v=1679681955' },
+        { nombre: 'Whiskas', precio: 29.99, detalles: 'Detalles del Producto', imagen: 'https://www.whiskas.com.mx/sites/g/files/fnmzdf2956/files/2023-04/70646002932.H.png' },
+        { nombre: 'Ricocat', precio: 39.99, detalles: 'Detalles del Producto ', imagen: 'https://plazavea.vteximg.com.br/arquivos/ids/347455-512-512/20083536.jpg' },
+        { nombre: 'Cat Chow', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://vaquitaexpress.com.co/media/catalog/product/cache/e89ece728e3939ca368b457071d3c0be/7/7/7702521104795_34.jpg' },
+        { nombre: 'Gati', precio: 59.99, detalles: 'Detalles del Producto ', imagen: 'https://walmartsv.vtexassets.com/arquivos/ids/320423/Alimento-Marca-Gati-Para-Gato-Adulto-Sabor-Pescado-M-s-12-Meses-3kg-1-596.jpg?v=638246220452400000' },
+        { nombre: 'Juguete para gato', precio: 19.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/61SGxcnP9ML._AC_UF894,1000_QL80_.jpg' },
+        { nombre: 'Juguete para gato', precio: 29.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/61AxF15DcFL.jpg' },
+        { nombre: 'Juguete para gato', precio: 39.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/41Bnqy49LWL._SL500_.jpg' },
+        { nombre: 'Ropa', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/71u13DQbuAL.jpg' },
+        { nombre: 'Ropa', precio: 59.99, detalles: 'Detalles del Producto ', imagen: 'https://images-na.ssl-images-amazon.com/images/I/71LrrtGvt%2BL._AC_SY879_.jpg' },
+        { nombre: 'Ropa', precio: 19.99, detalles: 'Detalles del Producto', imagen: 'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/dd36dcc39aebbf1e053ac40fd1049c74.jpg?imageMogr2/auto-orient%7CimageView2/2/w/800/q/70/format/webp' },
+        { nombre: 'Ropa', precio: 29.99, detalles: 'Detalles del Producto', imagen: 'https://down-mx.img.susercontent.com/file/d1f1185606c43799117a4fa22a1b70af' },
+        { nombre: 'Arenero para gatos', precio: 37.99, detalles: 'Detalles del Producto ', imagen: 'https://i.blogs.es/fd71d3/61pyfq-fndl._ac_sl1100_/450_1000.jpeg' },
+        { nombre: 'Arenero para gatos', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://images.hola.com/imagenes/seleccion/20230628234774/mejores-areneros-autolimpiables/1-273-369/arenero-m.jpg?tx=w_500' },
+        { nombre: 'Arenero para gatos', precio: 19.99, detalles: 'Detalles del Producto ', imagen: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1686820646-711CI9cnLqL.jpg?crop=1xw:1.00xh;center,top&resize=980:*' },
+        { nombre: 'Accesorios para gatos', precio: 29.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/81z2jNrW8kL.jpg' },
+        { nombre: 'Accesorios para gatos', precio: 39.99, detalles: 'Detalles del Producto ', imagen: 'https://cdnx.jumpseller.com/ohana-petshop/image/15261243/IMG_6516-min.jpg?1624645736' },
+        { nombre: 'Rascador', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://m.media-amazon.com/images/I/41V3SUrKa2L._SL500_.jpg' },
+        { nombre: 'Rascador', precio: 59.99, detalles: 'Detalles del Producto ', imagen: 'https://i.pinimg.com/550x/be/fa/0b/befa0bf236faa64679a47d3efdd30783.jpg' },
+        { nombre: 'Cama para gato', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://www.uxban.com/wp-content/uploads/2019/10/cama-gato-1.png' },
+        { nombre: 'Cama para gato', precio: 49.99, detalles: 'Detalles del Producto ', imagen: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1685950134-712DLGYyyL.jpg?crop=0.937xw:0.937xh;0.0634xw,0.0634xh&resize=980:*' }
+        
+      ];
+
+      // Llenar el catálogo con los datos 
+      productos.forEach(function(producto) {
+        var productoHTML = `
+          <div class="producto">
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h2>${producto.nombre}</h2>
+            <p class="precio">$${producto.precio.toFixed(2)}</p>
+            <p class="detalles">${producto.detalles}</p>
+            <button onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">Agregar al Carrito</button>
+          </div>
+        `;
+        $('#catalogoProductos').append(productoHTML);
+      });
+    });
+
+    function agregarAlCarrito(nombre, precio) {
+      
+      alert(`Producto agregado al carrito:\n${nombre} - $${precio.toFixed(2)}`);
+    }
+  </script>
+</body>
+</html>
