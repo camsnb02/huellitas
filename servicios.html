@@ -127,8 +127,35 @@
 
     function contratarServicio(nombreServicio) {
       
-      alert(`Has contratado el servicio: ${nombreServicio}`);
+      alert(`Consulta la disponibilidad del servicio: ${nombreServicio}`);
     }
   </script>
+  <section>
+   
+      <div class="container">
+          <h1>Servicios y Reservas</h1>
+          <form id="bookingForm">
+              <label for="service">Selecciona un servicio:</label>
+              <select id="service" required>
+                  <option value="" disabled selected>Elige un servicio</option>
+                  <option value="Consulta medica">Consulta medica</option>
+                  <option value="Vacunacion">Vacunacion</option>
+                  <option value="Nutricion y asesoramiento">Nutricion y asesoramiento</option>
+                  <option value="Odontologia">Odontologia</option>
+              </select>
+    
+              <label for="date">Selecciona una fecha:</label>
+              <input type="date" id="date" required>
+    
+              <label for="time">Selecciona una hora:</label>
+              <input type="time" id="time" required>
+    
+              <button type="submit">Reservar</button>
+          </form>
+      </div>
+    
+      <script src="script.js"></script>
+   
+    </section>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Servicios y Reservas</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Servicios y Reservas</h1>
+        <form id="bookingForm">
+            <label for="service">Selecciona un servicio:</label>
+            <select id="service" required>
+                <option value="" disabled selected>Elige un servicio</option>
+                <option value="service1">Consulta medica</option>
+                <option value="service2">Vacunacion</option>
+                <option value="service4">Nutricion y asesoramiento</option>
+                <option value="service5">Odontologia</option>
+            </select>
+
+            <label for="date">Selecciona una fecha:</label>
+            <input type="date" id="date" required>
+
+            <label for="time">Selecciona una hora:</label>
+            <input type="time" id="time" required>
+
+            <button type="submit">Reservar</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

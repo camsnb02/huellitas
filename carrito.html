@@ -1,29 +1,362 @@
 <!DOCTYPE html>
-<html lang="en">
+<title>Carrito de compras</title>
+<link rel="icon" type="image/png" href="img/perro.png">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Carrito de Compras</title>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // Variables
+          const baseDeDatos = [
+              {
+                  id: 1,
+                  nombre: 'Dog Chow',
+                  precio: 150,
+                  imagen: 'https://www.purina.com.bo/sites/default/files/styles/webp/public/2022-09/ADULTOS%20PERROS%20MINIS%20Y%20PEQUEN%CC%83OS-dog-chow-frente.jpeg.webp?itok=MpwQ51iL'
+              },
+              {
+                  id: 2,
+                  nombre: 'Pedigree',
+                  precio: 130,
+                  imagen: 'https://icnorteb2c.vteximg.com.br/arquivos/ids/156806-600-600/Alimento-para-Adulto-PedIgree-3-Kg-1-834.jpg?v=637369073474730000'
+              },
+              {
+                  id: 3,
+                  nombre: 'Royal Canin junior',
+                  precio: 200,
+                  imagen: 'https://petshop.petcenter.com.bo/wp-content/uploads/2021/02/mini-junior-x-75-kg.jpg'
+              },
+              {
+                  id: 4,
+                  nombre: 'Proplan puppy',
+                  precio: 250,
+                  imagen: 'https://petshop.petcenter.com.bo/wp-content/uploads/2021/02/pro-plan-puppy-complete-15-kg.jpg'
+              },
+              {
+                  id: 5,
+                  nombre: 'Podium Cat',
+                  precio: 80,
+                  imagen: 'https://www.podium.com.bo/cdn/shop/products/GatoCastradoPodiumCat900gr.jpg?v=1679681955'
+              },
+              {
+                  id: 6,
+                  nombre: 'Whiskas',
+                  precio: 110,
+                  imagen: 'https://www.whiskas.com.mx/sites/g/files/fnmzdf2956/files/2023-04/70646002932.H.png'
+              },
+              {
+                  id: 7,
+                  nombre: 'Ricocat',
+                  precio: 57,
+                  imagen: 'https://plazavea.vteximg.com.br/arquivos/ids/347455-512-512/20083536.jpg'
+              },
+              {
+                  id: 8,
+                  nombre: 'Cat Chow',
+                  precio: 78,
+                  imagen: 'https://vaquitaexpress.com.co/media/catalog/product/cache/e89ece728e3939ca368b457071d3c0be/7/7/7702521104795_34.jpg'
+              },
+              {
+                  id: 9,
+                  nombre: 'Gati',
+                  precio: 69,
+                  imagen: 'https://walmartsv.vtexassets.com/arquivos/ids/320423/Alimento-Marca-Gati-Para-Gato-Adulto-Sabor-Pescado-M-s-12-Meses-3kg-1-596.jpg?v=638246220452400000'
+              },
+              {
+                  id: 10,
+                  nombre: 'Arenero para gatos',
+                  precio: 300,
+                  imagen: 'https://i.blogs.es/fd71d3/61pyfq-fndl._ac_sl1100_/450_1000.jpeg'
+              },
+              {
+                  id: 11,
+                  nombre: 'Arenero para gatos',
+                  precio: 325,
+                  imagen: 'https://images.hola.com/imagenes/seleccion/20230628234774/mejores-areneros-autolimpiables/1-273-369/arenero-m.jpg?tx=w_500'
+              },
+              {
+                  id: 12,
+                  nombre: 'Arenero para gatos',
+                  precio: 530,
+                  imagen: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1686820646-711CI9cnLqL.jpg?crop=1xw:1.00xh;center,top&resize=980:*'
+              },
+              {
+                  id: 13,
+                  nombre: 'Rascador',
+                  precio: 245,
+                  imagen: 'https://i.pinimg.com/550x/be/fa/0b/befa0bf236faa64679a47d3efdd30783.jpg'
+              },
+              {
+                  id: 14,
+                  nombre: 'Rascador',
+                  precio: 168,
+                  imagen: 'https://m.media-amazon.com/images/I/41V3SUrKa2L._SL500_.jpg'
+              },
+              {
+                  id: 15,
+                  nombre: 'Rascador',
+                  precio: 79,
+                  imagen: 'https://tradineur.com/64165-superlarge_default/tradineur--rascador-para-gatos-de-carton-con-forma-de-queso-aranador-para-mascotas-afilador-de-unas-reciclable-31-x-165-x-14-cm.jpg'
+              },
+              {
+                  id: 16,
+                  nombre: 'Juguete para gato',
+                  precio: 12,
+                  imagen: 'https://m.media-amazon.com/images/I/61SGxcnP9ML._AC_UF894,1000_QL80_.jpg'
+              },
+              {
+                  id: 17,
+                  nombre: 'Juguete para gato',
+                  precio: 34,
+                  imagen: 'https://m.media-amazon.com/images/I/61AxF15DcFL.jpg'
+              },
+              {
+                  id: 18,
+                  nombre: 'Juguete para gato',
+                  precio: 56,
+                  imagen: 'https://m.media-amazon.com/images/I/41Bnqy49LWL._SL500_.jpg'
+              },
+              {
+                  id: 19,
+                  nombre: 'Juguete para perro',
+                  precio: 60,
+                  imagen: 'https://http2.mlstatic.com/D_NQ_NP_658191-MLA31787987586_082019-O.webp'
+              },
+              {
+                  id: 20,
+                  nombre: 'Juguete para perro',
+                  precio: 120,
+                  imagen: 'https://ripleype.imgix.net/https%3A%2F%2Fdpq25p1ucac70.cloudfront.net%2Fseller-place-files%2Fmrkl-files%2F140%2FMARKETPLACE%20INTERNACIONAL%2F81QlDOPVBML_194415474035_4.jpeg?w=750&h=555&ch=Width&auto=format&cs=strip&bg=FFFFFF&q=60&trimcolor=FFFFFF&trim=color&fit=fillmax&ixlib=js-1.1.0&s=d86012958de0bc07d88fc7f4ebccfc82'
+              },
+              {
+                  id: 21,
+                  nombre: 'Juguete para perro',
+                  precio: 35,
+                  imagen: 'https://m.media-amazon.com/images/I/615H2TujCGL._AC_UF894,1000_QL80_.jpg'
+              },
+              {
+                  id: 22,
+                  nombre: 'Cepillo para perro',
+                  precio: 109,
+                  imagen: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1689853089-71nsgTsRIL.jpg?crop=0.983xw:1xh;center,top&resize=980:*'
+              },
+              {
+                  id: 23,
+                  nombre: 'Cepillo para perro',
+                  precio: 45,
+                  imagen: 'https://www.hundshop.cl/cdn/shop/products/cepillo_bamboo_double_side_1000x1000.jpg?v=1582046073'
+              },
+              {
+                  id: 24,
+                  nombre: 'Cepillo para perro',
+                  precio: 65,
+                  imagen: 'https://cf.shopee.com.mx/file/55442cd1a45460d71920e241d9902bb4'
+              },
+              {
+                  id: 25,
+                  nombre: 'Higiene dental',
+                  precio: 35,
+                  imagen: 'https://www.lavanguardia.com/files/content_image_mobile_filter/uploads/2018/08/28/5fa437d0419f8.png'
+              },
+              {
+                  id: 26,
+                  nombre: 'Accesorios para gatos',
+                  precio: 60,
+                  imagen: 'https://m.media-amazon.com/images/I/81z2jNrW8kL.jpg'
+              },
+              {
+                  id: 27,
+                  nombre: 'Accesorios para gatos',
+                  precio: 50,
+                  imagen: 'https://cdnx.jumpseller.com/ohana-petshop/image/15261243/IMG_6516-min.jpg?1624645736'
+              },
+              {
+                  id: 28,
+                  nombre: 'Cama',
+                  precio: 150,
+                  imagen: 'https://m.media-amazon.com/images/I/81EECujVUEL._AC_UF1000,1000_QL80_.jpg'
+              },
+              {
+                  id: 29,
+                  nombre: 'Cama ',
+                  precio: 250,
+                  imagen: 'https://bawanza.com/149-thickbox_default/cama-para-perros-de-madera-hueso.jpg'
+              },
+              {
+                  id: 30,
+                  nombre: 'Cama ',
+                  precio: 350,
+                  imagen: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1685950134-712DLGYyyL.jpg?crop=0.937xw:0.937xh;0.0634xw,0.0634xh&resize=980:*'
+              }
+              
+
+          ];
+
+          let carrito = [];
+          const divisa = 'Bs';
+          const DOMitems = document.querySelector('#items');
+          const DOMcarrito = document.querySelector('#carrito');
+          const DOMtotal = document.querySelector('#total');
+          const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+
+          // Funciones
+
+          /**
+          * Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
+          */
+          function renderizarProductos() {
+              baseDeDatos.forEach((info) => {
+                  // Estructura
+                  const miNodo = document.createElement('div');
+                  miNodo.classList.add('card', 'col-sm-4');
+                  // Body
+                  const miNodoCardBody = document.createElement('div');
+                  miNodoCardBody.classList.add('card-body');
+                  // Titulo
+                  const miNodoTitle = document.createElement('h5');
+                  miNodoTitle.classList.add('card-title');
+                  miNodoTitle.textContent = info.nombre;
+                  // Imagen
+                  const miNodoImagen = document.createElement('img');
+                  miNodoImagen.classList.add('img-fluid');
+                  miNodoImagen.setAttribute('src', info.imagen);
+                  // Precio
+                  const miNodoPrecio = document.createElement('p');
+                  miNodoPrecio.classList.add('card-text');
+                  miNodoPrecio.textContent = `${info.precio}${divisa}`;
+                  // Boton
+                  const miNodoBoton = document.createElement('button');
+                  miNodoBoton.classList.add('btn', 'btn-primary');
+                  miNodoBoton.textContent = '+';
+                  miNodoBoton.setAttribute('marcador', info.id);
+                  miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
+                  // Insertamos
+                  miNodoCardBody.appendChild(miNodoImagen);
+                  miNodoCardBody.appendChild(miNodoTitle);
+                  miNodoCardBody.appendChild(miNodoPrecio);
+                  miNodoCardBody.appendChild(miNodoBoton);
+                  miNodo.appendChild(miNodoCardBody);
+                  DOMitems.appendChild(miNodo);
+              });
+          }
+
+          /**
+          * Evento para añadir un producto al carrito de la compra
+          */
+          function anyadirProductoAlCarrito(evento) {
+              // Anyadimos el Nodo a nuestro carrito
+              carrito.push(evento.target.getAttribute('marcador'))
+              // Actualizamos el carrito
+              renderizarCarrito();
+
+          }
+
+          /**
+          * Dibuja todos los productos guardados en el carrito
+          */
+          function renderizarCarrito() {
+              // Vaciamos todo el html
+              DOMcarrito.textContent = '';
+              // Quitamos los duplicados
+              const carritoSinDuplicados = [...new Set(carrito)];
+              // Generamos los Nodos a partir de carrito
+              carritoSinDuplicados.forEach((item) => {
+                  // Obtenemos el item que necesitamos de la variable base de datos
+                  const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                      // ¿Coincide las id? Solo puede existir un caso
+                      return itemBaseDatos.id === parseInt(item);
+                  });
+                  // Cuenta el número de veces que se repite el producto
+                  const numeroUnidadesItem = carrito.reduce((total, itemId) => {
+                      // ¿Coincide las id? Incremento el contador, en caso contrario no mantengo
+                      return itemId === item ? total += 1 : total;
+                  }, 0);
+                  // Creamos el nodo del item del carrito
+                  const miNodo = document.createElement('li');
+                  miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
+                  miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${miItem[0].precio}${divisa}`;
+                  // Boton de borrar
+                  const miBoton = document.createElement('button');
+                  miBoton.classList.add('btn', 'btn-danger', 'mx-5');
+                  miBoton.textContent = 'X';
+                  miBoton.style.marginLeft = '1rem';
+                  miBoton.dataset.item = item;
+                  miBoton.addEventListener('click', borrarItemCarrito);
+                  // Mezclamos nodos
+                  miNodo.appendChild(miBoton);
+                  DOMcarrito.appendChild(miNodo);
+              });
+             // Renderizamos el precio total en el HTML
+             DOMtotal.textContent = calcularTotal();
+          }
+
+          /**
+          * Evento para borrar un elemento del carrito
+          */
+          function borrarItemCarrito(evento) {
+              // Obtenemos el producto ID que hay en el boton pulsado
+              const id = evento.target.dataset.item;
+              // Borramos todos los productos
+              carrito = carrito.filter((carritoId) => {
+                  return carritoId !== id;
+              });
+              // volvemos a renderizar
+              renderizarCarrito();
+          }
+
+          /**
+           * Calcula el precio total teniendo en cuenta los productos repetidos
+           */
+          function calcularTotal() {
+              // Recorremos el array del carrito
+              return carrito.reduce((total, item) => {
+                  // De cada elemento obtenemos su precio
+                  const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                      return itemBaseDatos.id === parseInt(item);
+                  });
+                  // Los sumamos al total
+                  return total + miItem[0].precio;
+              }, 0).toFixed(2);
+          }
+
+          /**
+          * Varia el carrito y vuelve a dibujarlo
+          */
+          function vaciarCarrito() {
+              // Limpiamos los productos guardados
+              carrito = [];
+              // Renderizamos los cambios
+              renderizarCarrito();
+          }
+
+          // Eventos
+          DOMbotonVaciar.addEventListener('click', vaciarCarrito);
+
+          // Inicio
+          renderizarProductos();
+          renderizarCarrito();
+        });
+    </script>
 </head>
 <body>
-
-  <div id="carrito">
-    <h2>Carrito de Compras</h2>
-    <ul id="lista-carrito"></ul>
-    <button id="vaciar-carrito">Vaciar Carrito</button>
-  </div>
-
-  <div id="productos">
-    <h2>Productos</h2>
-    <ul>
-      <li data-id="1">Producto 1 <button class="agregar-carrito">Agregar al Carrito</button></li>
-      <li data-id="2">Producto 2 <button class="agregar-carrito">Agregar al Carrito</button></li>
-      <li data-id="3">Producto 3 <button class="agregar-carrito">Agregar al Carrito</button></li>
-    </ul>
-  </div>
-
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="script.js"></script>
+    <div class="container">
+        <div class="row">
+            <!-- Elementos generados a partir del JSON -->
+            <main id="items" class="col-sm-8 row"></main>
+            <!-- Carrito -->
+            <aside class="col-sm-4">
+                <h2>Carrito</h2>
+                <!-- Elementos del carrito -->
+                <ul id="carrito" class="list-group"></ul>
+                <hr>
+                <!-- Precio total -->
+                <p class="text-right">Total: <span id="total"></span>Bs;</p>
+                <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+            </aside>
+        </div>
+    </div>
 </body>
 </html>
